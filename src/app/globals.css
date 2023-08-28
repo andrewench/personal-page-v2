@@ -1,5 +1,18 @@
+:root {
+  --text-level-1: #292929;
+  --text-level-2: #515151;
+  --text-level-3: #8f8f8f;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+
+  background-color: #1b1b1b;
 }

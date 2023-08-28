@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {}
+    "paths": {
+      "@/components/screens": ["components/screens"],
+      "@/components/layout": ["components/layout"],
+      "@/components/shared": ["components/shared"],
+      "@/*": ["./*"]
+    }
   }
 }
