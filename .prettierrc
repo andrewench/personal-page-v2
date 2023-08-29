@@ -14,7 +14,9 @@
     "^@/components/screens",
     "^@/components/layout",
     "^@/components/shared",
-    "^@/"
+    "^@/shared/fonts",
+    "^@/",
+    "^(.*.css)$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,

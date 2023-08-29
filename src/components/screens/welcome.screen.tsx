@@ -1,12 +1,25 @@
 import { FC } from 'react'
 
-import { ScreenLayout } from '../layout'
 import { styled } from 'styled-components'
+
+import { Flex, ScreenLayout } from '@/components/layout'
+
+import { caveat } from '@/shared/fonts'
 
 export const Welcome: FC = () => {
   return (
     <StyledBox>
-      <ScreenLayout>Welcome screen</ScreenLayout>
+      <ScreenLayout>
+        <StyledFlex direction="column" align="center" content="center">
+          <StyledHeading className={caveat.className}>
+            Hello, I&apos;m Andrew
+          </StyledHeading>
+
+          <StyledSign className={caveat.className}>
+            React Frontend Developer
+          </StyledSign>
+        </StyledFlex>
+      </ScreenLayout>
     </StyledBox>
   )
 }
@@ -42,4 +55,19 @@ const StyledBox = styled.div`
       );
     backdrop-filter: blur(6px);
   }
+`
+
+const StyledFlex = styled(Flex)`
+  height: calc(100vh - 70px - 40px - 70px);
+`
+
+const StyledHeading = styled.h1`
+  font-weight: 100;
+  font-size: 3rem;
+  color: #fff;
+`
+
+const StyledSign = styled.p`
+  font-size: 1.3rem;
+  color: var(--text-level-3);
 `

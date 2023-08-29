@@ -12,7 +12,7 @@ import { HeaderHashLink } from '@/components/ui'
 
 export const Header: FC = () => {
   return (
-    <StyledBox flex content="space-between">
+    <StyledBox flex align="center" content="space-between">
       <Logo />
 
       <Flex align="center" gap={20}>

@@ -40,7 +40,8 @@ export const Flex: FC<PropsWithChildren<IFlex>> = ({
 
 const StyledBox = styled.div<IFlex>`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: ${({ direction }) => direction};
+  align-items: ${({ align }) => align};
+  justify-content: ${({ content }) => content};
   gap: ${({ gap }) => `${gap}px`};
 `

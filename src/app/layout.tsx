@@ -1,11 +1,10 @@
 import { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
 import { ReactNode } from 'react'
 
-import './globals.css'
+import { inter } from '@/shared/fonts'
 
-const inter = Inter({ subsets: ['latin'] })
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'andrewench \\ Personal page',

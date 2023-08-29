@@ -5,6 +5,7 @@
       "@/components/screens": ["components/screens"],
       "@/components/layout": ["components/layout"],
       "@/components/shared": ["components/shared"],
+      "@/shared/fonts": ["shared/fonts"],
       "@/*": ["./*"]
     }
   }
