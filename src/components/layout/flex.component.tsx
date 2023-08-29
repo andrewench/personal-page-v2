@@ -15,6 +15,7 @@ export interface IFlex {
     | 'space-evenly'
   direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
   gap?: number
+  grid?: boolean
 }
 
 export const Flex: FC<PropsWithChildren<IFlex>> = ({
@@ -22,6 +23,7 @@ export const Flex: FC<PropsWithChildren<IFlex>> = ({
   align = 'start',
   content = 'start',
   gap = 5,
+  grid = false,
   children,
   ...props
 }) => {
@@ -31,6 +33,7 @@ export const Flex: FC<PropsWithChildren<IFlex>> = ({
       align={align}
       content={content}
       gap={gap}
+      grid={grid}
       {...props}
     >
       {children}
@@ -40,6 +43,7 @@ export const Flex: FC<PropsWithChildren<IFlex>> = ({
 
 const StyledBox = styled.div<IFlex>`
   display: flex;
+  flex-wrap: ${({ grid }) => (grid ? 'wrap' : '')};
   flex-direction: ${({ direction }) => direction};
   align-items: ${({ align }) => align};
   justify-content: ${({ content }) => content};

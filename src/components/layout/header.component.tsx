@@ -31,4 +31,5 @@ const StyledBox = styled(ScreenLayout)`
   left: 0;
   width: 100%;
   height: 5rem;
+  z-index: 9000;
 `
