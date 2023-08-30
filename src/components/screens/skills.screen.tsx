@@ -29,6 +29,7 @@ export const Skills: FC = () => {
 
 const StyledBox = styled.div`
   padding: 100px 0;
+  height: 1500px;
   background-color: #18181b;
   color: #fff;
 `

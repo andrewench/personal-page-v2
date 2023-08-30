@@ -5,12 +5,19 @@ import { styled } from 'styled-components'
 interface IProgressPoint {
   label: string
   level: 1 | 2 | 3 | 4
+  tooltip: string
 }
 
-export const ProgressPoint: FC<IProgressPoint> = ({ label, level }) => {
+export const ProgressPoint: FC<IProgressPoint> = ({
+  label,
+  level,
+  tooltip,
+}) => {
   return (
     <StyledBox>
-      <StyledLabel level={level}>{label}</StyledLabel>
+      <StyledLabel level={level} data-tooltip={tooltip}>
+        {label}
+      </StyledLabel>
 
       <StyledArrow level={level} />
     </StyledBox>
@@ -28,7 +35,7 @@ const StyledArrow = styled.div<{ level: number }>`
   border: 5px solid transparent;
   border-top: 7px solid var(--text-level-2);
 
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     left: 0;
@@ -48,5 +55,50 @@ const StyledLabel = styled.p<{ level: number }>`
   font-size: 0.75rem;
   border-bottom: 1px solid var(--text-level-1);
   white-space: nowrap;
+  transition: 0.3s color;
   color: var(--text-level-3);
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    display: block;
+    left: -30px;
+    bottom: 28px;
+    border-radius: 4px;
+    width: max-content;
+    padding: 4px 10px;
+    z-index: 1000;
+    white-space: break-spaces;
+    transition: 0.3s opacity;
+    color: #fefefe;
+    background-color: #0b0b0b;
+    box-shadow: 4px 4px 10px #0b0b0b70;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 4px);
+    top: -10px;
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: 0.3s opacity;
+    border: 6px solid transparent;
+    border-top: 8px solid #0b0b0b;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+  }
+
+  &:hover::after,
+  &:hover::before {
+    visibility: visible;
+    opacity: 1;
+  }
 `

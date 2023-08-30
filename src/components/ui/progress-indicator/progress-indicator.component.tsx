@@ -1,33 +1,32 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { styled } from 'styled-components'
 
 import { Flex } from '@/components/layout'
 
-import { ProgressPoint } from '@/components/shared'
+import { RenderedProgressPoints } from './rendered-progress-points.component'
 
 interface IProgressIndicator {
   label: string
 }
 
-export const ProgressIndicator: FC<IProgressIndicator> = ({ label }) => {
-  return (
-    <StyledBar>
-      <StyledStages content="space-between">
-        <ProgressPoint level={1} label="WTF" />
-        <ProgressPoint level={2} label="Doubts" />
-        <ProgressPoint level={3} label="Comfort" />
-        <ProgressPoint level={4} label="Deep" />
-      </StyledStages>
+export const ProgressIndicator: FC<IProgressIndicator> = memo(
+  function ProgressIndicator({ label }) {
+    return (
+      <StyledBar>
+        <StyledStages content="space-between">
+          <RenderedProgressPoints />
+        </StyledStages>
 
-      <StyledProgressBar>
-        <StyledDrag></StyledDrag>
-      </StyledProgressBar>
+        <StyledProgressBar>
+          <StyledDrag></StyledDrag>
+        </StyledProgressBar>
 
-      <StyledLabel>{label}</StyledLabel>
-    </StyledBar>
-  )
-}
+        <StyledLabel>{label}</StyledLabel>
+      </StyledBar>
+    )
+  },
+)
 
 const StyledBar = styled.div`
   width: 280px;

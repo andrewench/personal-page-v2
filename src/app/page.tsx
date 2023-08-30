@@ -1,22 +1,7 @@
 'use client'
 
-import { Skills, Welcome } from '@/components/screens'
+import { MainProvider } from '@/components/providers'
 
-import { Header } from '@/components/layout'
-
-import { StyledProvider } from '@/components/providers'
-
-const Main = () => {
-  return (
-    <main>
-      <StyledProvider>
-        <Header />
-
-        <Welcome />
-        <Skills />
-      </StyledProvider>
-    </main>
-  )
-}
+const Main = () => <MainProvider />
 
 export default Main
