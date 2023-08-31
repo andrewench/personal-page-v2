@@ -10,13 +10,12 @@ import { RenderedProgressPoints } from './rendered-progress-points.component'
 
 interface IProgressIndicator {
   label: string
-  maxWidth: number
   percent: number
 }
 
 export const ProgressIndicator: FC<IProgressIndicator> = memo(
-  function ProgressIndicator({ label, maxWidth, percent }) {
-    const calculateProgress = (percent: number) => (maxWidth * percent) / 100
+  function ProgressIndicator({ label, percent }) {
+    const calculateProgress = (percent: number) => (280 * percent) / 100
 
     return (
       <StyledBar>
