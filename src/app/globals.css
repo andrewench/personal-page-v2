@@ -12,6 +12,11 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  color: #1b1b1b;
+  background-color: #fefefe;
+}
+
 body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
