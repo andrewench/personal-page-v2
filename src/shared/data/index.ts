@@ -1,1 +1,4 @@
-export { ProgressPointsList } from './progress-points.data'
+export {
+  ProgressPointsList,
+  ProgressPointsColors,
+} from './progress-points.data'

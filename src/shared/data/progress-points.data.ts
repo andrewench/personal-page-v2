@@ -26,3 +26,5 @@ export const ProgressPointsList: IProgressPointsList[] = [
     tooltip: 'Deep – deep knowledge',
   },
 ]
+
+export const ProgressPointsColors = ['#db5945', '#dbad45', '#86db45', '#45d4db']

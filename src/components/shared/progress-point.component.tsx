@@ -2,16 +2,20 @@ import { FC } from 'react'
 
 import { styled } from 'styled-components'
 
+import { ProgressPointsColors } from '@/shared/data'
+
 interface IProgressPoint {
   label: string
   level: 1 | 2 | 3 | 4
   tooltip: string
+  percent: number
 }
 
 export const ProgressPoint: FC<IProgressPoint> = ({
   label,
   level,
   tooltip,
+  percent,
 }) => {
   return (
     <StyledBox>
@@ -19,7 +23,7 @@ export const ProgressPoint: FC<IProgressPoint> = ({
         {label}
       </StyledLabel>
 
-      <StyledArrow level={level} />
+      <StyledArrow level={level} percent={percent} />
     </StyledBox>
   )
 }
@@ -28,12 +32,16 @@ const StyledBox = styled.div`
   position: relative;
 `
 
-const StyledArrow = styled.div<{ level: number }>`
+const StyledArrow = styled.div<{ level: number; percent: number }>`
   position: relative;
   width: 0;
   height: 0;
   border: 5px solid transparent;
-  border-top: 7px solid var(--text-level-2);
+  border-top: 7px solid
+    ${({ level, percent }) =>
+      percent >= 25 * level
+        ? `${ProgressPointsColors[level - 1]}`
+        : `${ProgressPointsColors[level - 1]}40`};
 
   &::before {
     content: '';
