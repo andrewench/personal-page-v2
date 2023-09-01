@@ -17,12 +17,12 @@ export const Header: FC<{ scrollY: number }> = memo(function Header({
     <StyledBox flex align="center" content="space-between" scrollY={scrollY}>
       <Logo />
 
-      <Flex align="center" gap={20}>
+      <StyledLinks align="center" gap={0}>
         <HeaderHashLink label="Skills" hash="#skills" />
         <HeaderHashLink label="Portfolio" hash="#portfolio" />
         <HeaderHashLink label="Plans" hash="#plans" />
         <HeaderHashLink label="About" hash="#about" />
-      </Flex>
+      </StyledLinks>
     </StyledBox>
   )
 })
@@ -36,4 +36,8 @@ const StyledBox = styled(ScreenLayout)<{ scrollY: number }>`
   z-index: 9000;
   box-shadow: ${({ scrollY }) => (scrollY > 400 ? '0 0 30px #00000060' : '')};
   backdrop-filter: ${({ scrollY }) => (scrollY > 400 ? 'blur(8px)' : '')};
+`
+
+const StyledLinks = styled(Flex)`
+  height: 100%;
 `

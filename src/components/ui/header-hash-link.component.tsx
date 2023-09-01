@@ -20,6 +20,21 @@ export const HeaderHashLink: FC<IHeaderHashLink> = memo(
 )
 
 const StyledText = styled(Link)`
+  position: relative;
   text-decoration: none;
+  z-index: 0;
+  padding: 32px 20px 0 20px;
+  transition: 0.3s color;
+  height: inherit;
   color: #fff;
+
+  &:hover {
+    color: var(--accent-color);
+    background: linear-gradient(
+      0deg,
+      var(--accent-color) 2px,
+      #00000020 2px,
+      transparent
+    );
+  }
 `
