@@ -1,5 +1,6 @@
-import { FC, memo } from 'react'
+import { FC, memo, useEffect, useRef } from 'react'
 
+import { animate, motion, motionValue, useInView } from 'framer-motion'
 import { styled } from 'styled-components'
 
 import { Flex } from '@/components/layout'
@@ -15,7 +16,45 @@ interface IProgressIndicator {
 
 export const ProgressIndicator: FC<IProgressIndicator> = memo(
   function ProgressIndicator({ label, percent }) {
+    const progressBarRef = useRef<HTMLDivElement>(null)
+    const progressPercentRef = useRef<HTMLParagraphElement>(null)
+
+    const animatedPercent = motionValue(0)
+
+    const isInView = useInView(progressBarRef, { once: true })
+
     const calculateProgress = (percent: number) => (280 * percent) / 100
+
+    useEffect(() => {
+      if (!progressBarRef.current) return
+
+      if (isInView) {
+        animate(
+          progressBarRef.current,
+          {
+            width: `${calculateProgress(percent)}px`,
+          },
+          {
+            duration: 1,
+          },
+        )
+      }
+    }, [isInView, percent])
+
+    useEffect(() => {
+      const controls = animate(animatedPercent, percent, {
+        duration: 1,
+        onUpdate(value) {
+          if (!progressPercentRef.current) return
+
+          progressPercentRef.current.textContent = value.toFixed(0) + '%'
+        },
+      })
+
+      return () => {
+        controls.stop()
+      }
+    }, [percent, animatedPercent])
 
     return (
       <StyledBar>
@@ -24,7 +63,11 @@ export const ProgressIndicator: FC<IProgressIndicator> = memo(
         </StyledStages>
 
         <StyledProgressBarBox>
-          <StyledProgressBar width={calculateProgress(percent)}>
+          <StyledProgressBar
+            ref={progressBarRef}
+            initial={{ width: 0 }}
+            width={calculateProgress(percent)}
+          >
             <StyledTrack palette={ProgressPointsColors} />
             <StyledDrag />
           </StyledProgressBar>
@@ -32,9 +75,11 @@ export const ProgressIndicator: FC<IProgressIndicator> = memo(
 
         <Flex align="center" content="space-between">
           <StyledLabel>{label}</StyledLabel>
-          <StyledPercent palette={ProgressPointsColors} percent={percent}>
-            {percent}%
-          </StyledPercent>
+          <StyledPercent
+            ref={progressPercentRef}
+            palette={ProgressPointsColors}
+            percent={percent}
+          />
         </Flex>
       </StyledBar>
     )
@@ -51,7 +96,7 @@ const StyledProgressBarBox = styled.div`
   background-color: #00000030;
 `
 
-const StyledProgressBar = styled.div<{ width: number }>`
+const StyledProgressBar = styled(motion.div)<{ width: number }>`
   position: relative;
   width: ${({ width }) => `${width}px`};
   height: 6px;
@@ -78,7 +123,7 @@ const StyledTrack = styled.div<{ palette: string[] }>`
 `
 
 const StyledStages = styled(Flex)`
-  padding: 0 10.6%;
+  padding: 0 10% 0 11.6%;
   margin-bottom: 5px;
   color: var(--text-level-2);
 `
@@ -90,7 +135,10 @@ const StyledLabel = styled.p`
   color: #fefefe;
 `
 
-const StyledPercent = styled.span<{ palette: string[]; percent: number }>`
+const StyledPercent = styled.div<{
+  palette: string[]
+  percent: number
+}>`
   font-size: 0.9rem;
   color: ${({ palette, percent }) => `${palette[Math.floor(percent / 25)]}`};
 `
