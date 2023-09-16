@@ -19,7 +19,8 @@
     "^@/shared/data",
     "^@/",
     "^(.*component)$",
-    "^(.*.css)$"
+    "^(.*.css)$",
+    "^[./]"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,

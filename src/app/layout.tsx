@@ -6,6 +6,8 @@ import { inter } from '@/shared/fonts'
 
 import './globals.css'
 
+import StyledComponentsRegistry from './registry'
+
 export const metadata: Metadata = {
   title: 'andrewench \\ Personal page',
   description: 'andrewench \\ Personal page',
@@ -14,7 +16,9 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
   )
 }

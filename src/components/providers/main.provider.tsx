@@ -6,7 +6,7 @@ import { Portfolio, Skills, Welcome } from '@/components/screens'
 
 import { Header } from '@/components/layout'
 
-import { StyledProvider } from '@/components/providers'
+import { StyledProvider } from './'
 
 export const MainProvider: FC = memo(function MainProvider() {
   const [scrollY, setScrollY] = useState<number>(0)
