@@ -1,2 +1,6 @@
 export { HeaderHashLink } from './header-hash-link.component'
 export { ProgressIndicator } from './progress-indicator/progress-indicator.component'
+export { LinkSwitcher } from './link-switcher.component'
+export { Tab } from './tab.component'
+export { CarouselDotButton } from './carousel-dot-button.component'
+export { CarouselGallery } from './carousel-gallery.component'

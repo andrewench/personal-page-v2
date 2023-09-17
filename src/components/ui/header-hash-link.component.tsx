@@ -29,10 +29,10 @@ const StyledText = styled(Link)`
   color: #fff;
 
   &:hover {
-    color: var(--accent-color);
+    color: var(--palette-red);
     background: linear-gradient(
       0deg,
-      var(--accent-color) 2px,
+      var(--palette-red) 2px,
       #00000020 2px,
       transparent
     );
