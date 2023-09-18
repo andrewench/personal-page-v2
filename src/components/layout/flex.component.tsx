@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, PropsWithChildren } from 'react'
+import { ForwardedRef, PropsWithChildren, forwardRef } from 'react'
 
 import { styled } from 'styled-components'
 
@@ -18,15 +18,18 @@ export interface IFlex {
   grid?: boolean
 }
 
-export const Flex: FC<PropsWithChildren<IFlex>> = ({
-  direction = 'row',
-  align = 'start',
-  content = 'start',
-  gap = 5,
-  grid = false,
-  children,
-  ...props
-}) => {
+export const Flex = forwardRef(function Flex(
+  {
+    direction = 'row',
+    align = 'start',
+    content = 'start',
+    gap = 5,
+    grid = false,
+    children,
+    ...props
+  }: PropsWithChildren<IFlex>,
+  ref?: ForwardedRef<HTMLDivElement>,
+) {
   return (
     <StyledBox
       direction={direction}
@@ -34,12 +37,13 @@ export const Flex: FC<PropsWithChildren<IFlex>> = ({
       content={content}
       gap={gap}
       grid={grid}
+      ref={ref}
       {...props}
     >
       {children}
     </StyledBox>
   )
-}
+})
 
 const StyledBox = styled.div<IFlex>`
   display: flex;

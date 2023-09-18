@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
 
 import { styled } from 'styled-components'
 
@@ -6,24 +6,23 @@ import { Flex } from '@/components/layout'
 
 import { CarouselDotButton } from '@/components/ui'
 
-export const CarouselGallery: FC = () => {
-  const [slide, setSlide] = useState<number>(1)
+interface ICarouselGallery {
+  slide: number
+  setSlide: Dispatch<SetStateAction<number>>
+}
 
+export const CarouselGallery: FC<ICarouselGallery> = ({ slide, setSlide }) => {
   return (
     <StyledDotCarousel align="center" content="center" gap={6}>
+      <CarouselDotButton slide={0} currentSlide={slide} setSlide={setSlide} />
+
+      <StyledDivider />
+
       <CarouselDotButton slide={1} currentSlide={slide} setSlide={setSlide} />
 
       <StyledDivider />
 
       <CarouselDotButton slide={2} currentSlide={slide} setSlide={setSlide} />
-
-      <StyledDivider />
-
-      <CarouselDotButton slide={3} currentSlide={slide} setSlide={setSlide} />
-
-      <StyledDivider />
-
-      <CarouselDotButton slide={4} currentSlide={slide} setSlide={setSlide} />
     </StyledDotCarousel>
   )
 }

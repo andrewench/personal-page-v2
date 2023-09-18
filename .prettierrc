@@ -15,6 +15,7 @@
     "^@/components/layout",
     "^@/components/shared",
     "^@/components/providers",
+    "^@/shared/hooks",
     "^@/shared/fonts",
     "^@/shared/data",
     "^@/",

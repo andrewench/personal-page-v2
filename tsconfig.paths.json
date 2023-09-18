@@ -6,6 +6,7 @@
       "@/components/layout": ["components/layout"],
       "@/components/shared": ["components/shared"],
       "@/components/providers": ["components/providers"],
+      "@/shared/hooks": ["shared/hooks"],
       "@/shared/fonts": ["shared/fonts"],
       "@/shared/data": ["shared/data"],
       "@/*": ["./*"]

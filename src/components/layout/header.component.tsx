@@ -34,8 +34,10 @@ const StyledBox = styled(ScreenLayout)<{ scrollY: number }>`
   width: 100%;
   height: 5rem;
   z-index: 9000;
+  transition: 0.3s background-color;
   box-shadow: ${({ scrollY }) => (scrollY > 400 ? '0 0 30px #00000060' : '')};
   backdrop-filter: ${({ scrollY }) => (scrollY > 400 ? 'blur(8px)' : '')};
+  background-color: ${({ scrollY }) => (scrollY > 400 ? '#000000ef' : '')};
 `
 
 const StyledLinks = styled(Flex)`

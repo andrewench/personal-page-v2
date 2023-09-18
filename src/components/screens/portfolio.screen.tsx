@@ -1,14 +1,17 @@
-import Image from 'next/image'
-
 import { FC } from 'react'
 
 import { styled } from 'styled-components'
 
-import { Flex, ScreenLayout, VerticalCarousel } from '@/components/layout'
+import {
+  Flex,
+  ProjectCarouselGallery,
+  ScreenLayout,
+  VerticalCarousel,
+} from '@/components/layout'
 
 import { SectionTitle } from '@/components/shared'
 
-import { CarouselGallery, LinkSwitcher } from '@/components/ui'
+import { LinkSwitcher } from '@/components/ui'
 
 export const Portfolio: FC = () => {
   return (
@@ -18,20 +21,7 @@ export const Portfolio: FC = () => {
       </ScreenLayout>
 
       <StyledFlex content="space-between">
-        <div>
-          <StyledImageBox>
-            <StyledImage
-              width={828}
-              height={518}
-              src="/assets/images/music-platform-playlist.png"
-              alt="Pet Project"
-              draggable={false}
-              quality={100}
-            />
-          </StyledImageBox>
-
-          <CarouselGallery />
-        </div>
+        <ProjectCarouselGallery />
 
         <StyledStickyCarousel>
           <VerticalCarousel>
@@ -54,17 +44,6 @@ const StyledBox = styled.div`
 const StyledFlex = styled(Flex)`
   margin-top: 60px;
   padding: 0 8rem;
-`
-
-const StyledImageBox = styled.div`
-  position: relative;
-  z-index: 1;
-`
-
-const StyledImage = styled(Image)`
-  display: block;
-  object-fit: cover;
-  box-shadow: 10px 30px 50px #00000010;
 `
 
 const StyledSourceLinks = styled(Flex)`
