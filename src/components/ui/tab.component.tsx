@@ -2,7 +2,7 @@ import { Dispatch, FC, SetStateAction } from 'react'
 
 import { styled } from 'styled-components'
 
-type TabRole = 'qr' | 'link'
+type TabRole = 'stack' | 'qr'
 
 interface ITab {
   label: string

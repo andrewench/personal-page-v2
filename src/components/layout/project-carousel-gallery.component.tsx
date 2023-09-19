@@ -41,17 +41,16 @@ export const ProjectCarouselGallery: FC = () => {
         onMouseDown={mouseDownHandler}
         onMouseUp={mouseUpHandler}
       >
-        {ProjectsList.map(image => (
+        {ProjectsList.map(({ slideIndex, ...props }) => (
           <StyledImage
             width={828}
             height={518}
-            src={image.src}
-            alt={image.alt}
             draggable={false}
-            slide={image.slideIndex}
-            currentSlide={slide}
             quality={100}
-            key={image.slideIndex}
+            slide={slideIndex}
+            currentSlide={slide}
+            key={slideIndex}
+            {...props}
           />
         ))}
       </StyledImageBox>
