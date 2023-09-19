@@ -4,7 +4,7 @@ import { FC, memo, useEffect, useState } from 'react'
 
 import { Portfolio, Skills, Welcome } from '@/components/screens'
 
-import { Header } from '@/components/layout'
+import { Footer, Header } from '@/components/layout'
 
 import { StyledProvider } from './'
 
@@ -37,6 +37,8 @@ export const MainProvider: FC = memo(function MainProvider() {
         <Welcome />
         <Skills />
         <Portfolio />
+
+        <Footer />
       </StyledProvider>
     </main>
   )

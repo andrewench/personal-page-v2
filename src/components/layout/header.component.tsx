@@ -6,9 +6,7 @@ import { styled } from 'styled-components'
 
 import { Flex, ScreenLayout } from '@/components/layout'
 
-import { Logo } from '@/components/shared'
-
-import { HeaderHashLink } from '@/components/ui'
+import { HeaderHashLink, Logo } from '@/components/ui'
 
 export const Header: FC<{ scrollY: number }> = memo(function Header({
   scrollY,
