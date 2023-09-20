@@ -1,4 +1,4 @@
-interface IProjectStackList {
+interface ITechItem {
   link: {
     href: string
     title: string
@@ -6,11 +6,13 @@ interface IProjectStackList {
   icon: {
     src: string
     alt: string
+    width?: number
+    height?: number
   }
 }
 
-export const ProjectStackList: IProjectStackList[] = [
-  {
+const TechList: Record<string, ITechItem> = {
+  react: {
     link: {
       href: 'https://react.dev/',
       title: 'React',
@@ -20,7 +22,7 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'React Icon',
     },
   },
-  {
+  typescript: {
     link: {
       href: 'https://www.typescriptlang.org/',
       title: 'Typescript',
@@ -30,7 +32,7 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'Typescript Icon',
     },
   },
-  {
+  tailwind: {
     link: {
       href: 'https://tailwindcss.com/',
       title: 'TailwindCSS',
@@ -40,7 +42,7 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'TailwindCSS Icon',
     },
   },
-  {
+  vite: {
     link: {
       href: 'https://vitejs.dev/',
       title: 'Vite',
@@ -50,7 +52,7 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'Vite Icon',
     },
   },
-  {
+  electron: {
     link: {
       href: 'https://www.electronjs.org/',
       title: 'Electron',
@@ -60,7 +62,7 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'Electron Icon',
     },
   },
-  {
+  i18next: {
     link: {
       href: 'https://www.i18next.com/',
       title: 'i18next',
@@ -70,7 +72,7 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'i18next Icon',
     },
   },
-  {
+  redux: {
     link: {
       href: 'https://redux.js.org/',
       title: 'Redux Toolkit',
@@ -80,7 +82,7 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'Redux Toolkit Icon',
     },
   },
-  {
+  framer: {
     link: {
       href: 'https://www.framer.com/motion/',
       title: 'Framer Motion',
@@ -90,4 +92,52 @@ export const ProjectStackList: IProjectStackList[] = [
       alt: 'Framer Motion Icon',
     },
   },
+  next: {
+    link: {
+      href: 'https://nextjs.org/',
+      title: 'Next.js',
+    },
+    icon: {
+      src: '/assets/icons/next.svg',
+      alt: 'Next.js Icon',
+    },
+  },
+  styledComponents: {
+    link: {
+      href: 'https://styled-components.com/',
+      title: 'Styled Components',
+    },
+    icon: {
+      src: '/assets/icons/styled-components.svg',
+      alt: 'Styled Components Icon',
+      width: 61,
+      height: 40,
+    },
+  },
+}
+
+const {
+  react,
+  typescript,
+  tailwind,
+  vite,
+  electron,
+  i18next,
+  redux,
+  framer,
+  next,
+  styledComponents,
+} = TechList
+
+export const ProjectStackList = [
+  react,
+  typescript,
+  tailwind,
+  vite,
+  electron,
+  i18next,
+  redux,
+  framer,
 ]
+
+export const BuildStackList = [next, typescript, styledComponents]

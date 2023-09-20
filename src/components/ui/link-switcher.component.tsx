@@ -10,7 +10,7 @@ import { Flex } from '@/components/layout'
 
 import { ProjectStackList } from '@/shared/data'
 
-import { Tab } from '@/components/ui'
+import { IconLink, Tab } from '@/components/ui'
 
 export const LinkSwitcher: FC = () => {
   const [tab, setTab] = useState<'stack' | 'qr'>('stack')
@@ -32,16 +32,19 @@ export const LinkSwitcher: FC = () => {
             <StyledLabel>Stack:</StyledLabel>
 
             <StyledStackList grid gap={22}>
-              {ProjectStackList.map(({ icon, link }, idx) => (
-                <Link
-                  href={link.href}
-                  key={idx}
-                  target="_blank"
-                  title={link.title}
-                >
-                  <Image src={icon.src} width={32} height={32} alt={icon.alt} />
-                </Link>
-              ))}
+              {ProjectStackList.map(
+                ({ icon: { alt, src }, link: { href, title } }, idx) => (
+                  <IconLink
+                    link={{
+                      href,
+                      title,
+                    }}
+                    image={{ src, alt }}
+                    key={idx}
+                    newTab
+                  />
+                ),
+              )}
             </StyledStackList>
           </StyledDescription>
         )}
