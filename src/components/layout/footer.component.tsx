@@ -17,9 +17,10 @@ type GithubResponse = {
 }
 
 export const Footer: FC = () => {
-  const [githubUserResponse, setGithubUserResponse] = useState<GithubResponse>(
-    {} as GithubResponse,
-  )
+  const [githubUserResponse, setGithubUserResponse] = useState<GithubResponse>({
+    avatar_url: '',
+    name: '',
+  })
 
   useEffect(() => {
     const fetchAvatarUrl = async () => {
@@ -27,7 +28,7 @@ export const Footer: FC = () => {
 
       const { avatar_url, name } = (await response.json()) as GithubResponse
 
-      setGithubUserResponse(state => ({
+      setGithubUserResponse(() => ({
         avatar_url,
         name,
       }))
@@ -49,13 +50,15 @@ export const Footer: FC = () => {
               target="_blank"
               title="Open a new tab"
             >
-              <StyledAvatar
-                src={githubUserResponse.avatar_url}
-                alt={`${githubUserResponse.name}'s Github Avatar`}
-                width={40}
-                height={40}
-                quality={100}
-              />
+              {githubUserResponse.avatar_url && (
+                <StyledAvatar
+                  src={githubUserResponse.avatar_url}
+                  alt={`${githubUserResponse.name}'s Github Avatar`}
+                  width={40}
+                  height={40}
+                  quality={100}
+                />
+              )}
               andrewench
             </StyledProfileLink>
           </StyledProfileText>

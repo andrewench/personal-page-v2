@@ -46,9 +46,8 @@ export const ProjectCarouselGallery: FC = () => {
             width={828}
             height={518}
             draggable={false}
+            priority={true}
             quality={100}
-            slide={slideIndex}
-            currentSlide={slide}
             key={slideIndex}
             {...props}
           />
@@ -87,7 +86,7 @@ const StyledImageBox = styled(Flex)<{
   }
 `
 
-const StyledImage = styled(Image)<{ slide: number; currentSlide: number }>`
+const StyledImage = styled(Image)`
   display: block;
   object-fit: cover;
   user-select: none;
